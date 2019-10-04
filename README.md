@@ -9,7 +9,7 @@ Our target audience is mainly international students who are new to an area. In 
 | Dataset description        | Source(s) | Owner    |
 |----------------------------|-----------|----------|
 | Available house rentals    |           | Meheruna |
-| Publc transportation       |           | Miara    |
+| Publc transportation       |           | Maira    |
 | Crime                      |           | Owen     |
 | Grocery/supermarket stores |           | Resmy    |
 | Restaurants etc.           |           | ?        |
