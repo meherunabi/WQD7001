@@ -6,13 +6,13 @@ Our project will focus on bringing together a number of datasets, containing geo
 Our target audience is mainly international students who are new to an area. In particular, those students who are currently located in Malaysia.
 
 ## Dataset(s)
-| Dataset description        | Source(s) | Owner     |
-|----------------------------|-----------|-----------|
-| Available house rentals    |           | Mehenruna |
-| Publc transportation       |           | Miara     |
-| Crime                      |           | Owen      |
-| Grocery/supermarket stores |           | Resmy     |
-| Restaurants etc.           |           | ?         |
+| Dataset description        | Source(s) | Owner    |
+|----------------------------|-----------|----------|
+| Available house rentals    |           | Meheruna |
+| Publc transportation       |           | Miara    |
+| Crime                      |           | Owen     |
+| Grocery/supermarket stores |           | Resmy    |
+| Restaurants etc.           |           | ?        |
 
 ## User input
 The main user input will be their selection of a geographic area of interest, via an graphical map.
