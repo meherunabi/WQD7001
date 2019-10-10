@@ -31,6 +31,11 @@ The main user input will be their selection of a geographic area of interest, vi
 ```
 
 ## Running the R-Shiny application
+Before running the application, you will probably need to install a few packages ...
+```
+install.packages('leaflet')
+install.packages('ggmap')
+```
 ### R Studio
 - Using "File > Open File", locate the project directory (i.e. where you cloned code from GitHub) and open either of the following files ...
 ```
