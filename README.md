@@ -34,6 +34,7 @@ The main user input will be their selection of a geographic area of interest, vi
 ### R Studio
 - Using "File > Open File", locate the project directory (i.e. where you cloned code from GitHub) and open either of the following files ...
 ```
+global.R
 UI.R
 server.R
 ```

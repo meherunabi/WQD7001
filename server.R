@@ -3,10 +3,22 @@
 #
 # server.R
 #
-library(shiny)
-
 function(input, output) {
   output$outputSearchText <- renderText({
-    paste("You searched for: ", input$inputSearchText)
+    point <- geocode(input$inputSearchText)
+    paste(c("You searched for:", 
+          input$inputSearchText,
+          "(",
+          point,
+          ")"))
   })
+
+  output$outputMap <- renderLeaflet({
+    leaflet() %>%
+      addProviderTiles(providers$CartoDB.Positron,
+                       options = providerTileOptions(noWrap = TRUE)
+      ) %>%
+      addMarkers(data = geocode(input$inputSearchText))
+  })
+
 }
