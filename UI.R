@@ -3,7 +3,10 @@
 #
 # ui.R
 #
+library(shiny)
+
 fluidPage(
-  numericInput(inputId = "n", "Sample size", value = 25),
-  plotOutput(outputId = "hist")
+  titlePanel("WQD7001 - Group project"),
+  textInput(inputId = "inputSearchText", label = "Search location", width = "100%"),
+  textOutput(outputId = "outputSearchText")
 )

@@ -3,8 +3,10 @@
 #
 # server.R
 #
+library(shiny)
+
 function(input, output) {
-  output$hist <- renderPlot({
-    hist(rnorm(input$n))
+  output$outputSearchText <- renderText({
+    paste("You searched for: ", input$inputSearchText)
   })
 }
