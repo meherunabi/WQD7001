@@ -49,28 +49,47 @@ function(input, output) {
 
   output$outputDataTableYelp <- renderDataTable({
     mapBounds <- input$outputMap_bounds
-    message(str_c(mapBounds, sep = '', collapse = ', '))
+    print('means:')
+    lonMean <- mean(c(mapBounds$west, mapBounds$east)) %>% print()
+    latMean <- mean(c(mapBounds$north, mapBounds$south)) %>% print()
+    print('mapBounds:')
+    print(mapBounds$north)
+    print(mapBounds$south)
+    print(mapBounds$west)
+    print(mapBounds$east)
+    
     locations <- yelpJSON %>%
-      filter(coordinates.longitude > mapBounds$west &
-               coordinates.longitude < mapBounds$east &
-               coordinates.latitude < mapBounds$north &
-               coordinates.latitude > mapBounds$south) %>%
+      filter(between(coordinates.longitude, mapBounds$west, mapBounds$east)) %>%
+      filter(between(coordinates.latitude, mapBounds$south, mapBounds$north)) %>%
+      mutate(distance = sqrt((abs(coordinates.longitude - lonMean)^2)
+                             + (abs(coordinates.latitude - latMean)^2))) %>%
       select(name, 
+             distance,
              url,
              display_phone,
              price,
              coordinates.longitude, coordinates.latitude) %>%
       distinct() %>%
-      top_n(5)
+      top_n(-50, distance)
+
+    yelpIcon <- makeIcon(
+      iconUrl = 'https://s3-media1.fl.yelpcdn.com/assets/2/www/img/a6bbc59c7458/ico/favicon-16x16.ico',
+    )
+
     leafletProxy("outputMap", data = locations) %>%
+      clearMarkers() %>%
       # addTiles() %>%
-      addMarkers(~coordinates.longitude,
+      addMarkers(icon = yelpIcon,
+                 ~coordinates.longitude,
                  ~coordinates.latitude,
                  popup = ~as.character(name),
                  label = ~as.character(name))
     glimpse(locations)
     locations %>%
-      select(name, 
+      select(name,
+             # distance,
+             # coordinates.longitude,
+             # coordinates.latitude,
              display_phone,
              price)
   },
@@ -80,8 +99,9 @@ function(input, output) {
     lengthChange = FALSE,
     ordering= FALSE,
     pageLength = 5,
-    paging = FALSE,
+    paging = T,
     searching = FALSE
   ),
-  rownames= FALSE)
+  rownames = F
+  )
 }
