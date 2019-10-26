@@ -3,6 +3,7 @@
 #
 # server.R
 #
+
 getPoint <- function(text) {
   message(text)
   if(0 < str_length(trimws(text))) {
@@ -70,7 +71,7 @@ function(input, output) {
              price,
              coordinates.longitude, coordinates.latitude) %>%
       distinct() %>%
-      top_n(-50, distance)
+      top_n(-500, distance)
 
     yelpIcon <- makeIcon(
       iconUrl = 'https://s3-media1.fl.yelpcdn.com/assets/2/www/img/a6bbc59c7458/ico/favicon-16x16.ico',
